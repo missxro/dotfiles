@@ -32,7 +32,7 @@
 ```text
 config/     i3 / Polybar / Kitty / Picom / optional appearance
 bin/        Wallpaper launchers + shared supervisor helper
-packages/   Core and optional Debian package lists
+packages/   Core and optional package lists
 assets/     Desktop preview + licensed DepartureMono fonts
 docs/       Manual setup + portability notes
 tests/      Repository, launcher and MPRIS checks
