@@ -57,7 +57,7 @@ def download_fastfetch(directory, architecture):
     return package
 
 ROOT = Path(__file__).resolve().parent
-MODULES = {'core': ['autostart', 'i3', 'kitty', 'picom', 'polybar'],
+MODULES = {'core': ['autostart', 'i3', 'kitty', 'nvim', 'picom', 'polybar'],
            'gtk': ['gtk-3.0'], 'qt': ['qt5ct'], 'fastfetch': ['fastfetch']}
 BANNER = r'''
  ____   ___ _____ _____ ___ _     _____ ____

@@ -10,3 +10,25 @@ if [[ -r "$_p10k_dir/powerlevel10k.zsh-theme" ]]; then
 fi
 [[ -r "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
 unset _p10k_dir
+
+# Keep standard commands available when optional package installation is declined.
+if (( $+commands[lsd] )); then
+  alias ls='lsd --group-dirs=first'
+  alias l='lsd --group-dirs=first'
+  alias ll='lsd -lh --group-dirs=first'
+  alias la='lsd -a --group-dirs=first'
+  alias lla='lsd -lha --group-dirs=first'
+fi
+if (( $+commands[batcat] )); then
+  alias cat='batcat'
+  alias catn='batcat --style=plain'
+  alias catnp='batcat --style=plain --paging=never'
+  alias catp='batcat --paging=never'
+fi
+if (( $+commands[xclip] )); then
+  alias xcopy='xclip -selection clipboard'
+fi
+if (( $+commands[nvim] )); then
+  export EDITOR=nvim
+  export VISUAL=nvim
+fi

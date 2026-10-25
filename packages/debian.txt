@@ -6,6 +6,10 @@ i3lock
 xss-lock
 kitty
 zsh
+lsd
+xclip
+bat
+neovim
 polybar
 picom
 suckless-tools
