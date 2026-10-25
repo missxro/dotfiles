@@ -46,13 +46,24 @@ class ZshTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder, mock.patch.dict(os.environ, {'HOME': folder}):
             home = Path(folder)
             for distro in ('debian', 'ubuntu', 'kali', 'parrot'):
-                self.assertIn('zsh', installer.package_names(['core'], distro))
+                for package in ('zsh', 'lsd', 'bat', 'neovim'):
+                    self.assertIn(package, installer.package_names(['core'], distro))
                 self.assertIn('xserver-xorg', installer.package_names(['core'], distro))
             targets = dict((str(target), source) for source, target in installer.plan(['core']))
             self.assertEqual(targets[str(home / '.zshrc')], ROOT / 'config/zsh/zshrc')
             self.assertEqual(targets[str(home / '.p10k.zsh')], ROOT / 'config/zsh/p10k.zsh')
             self.assertIn(str(home / '.local/share/debian-i3-dotfiles/powerlevel10k/internal/p10k.zsh'), targets)
             self.assertEqual(len(targets), len(installer.plan(['core'])))
+
+    def test_terminal_utilities_configuration(self):
+        config = (ROOT / 'config/zsh/zshrc').read_text()
+        for alias in ("ls='lsd --group-dirs=first'", "ll='lsd -lh --group-dirs=first'",
+                      "cat='batcat'", "catnp='batcat --style=plain --paging=never'"):
+            self.assertIn(alias, config)
+        self.assertIn("export EDITOR=nvim", config)
+        nvim = (ROOT / 'config/nvim/init.lua').read_text()
+        self.assertIn('vim.opt.number = true', nvim)
+        self.assertNotRegex(nvim, r'require|https?://|git clone')
 
     def test_docs_explain_scope_and_no_runtime_download(self):
         docs = (ROOT / "docs/zsh.md").read_text().lower()
