@@ -22,7 +22,7 @@
 
 ## Features
 
-- Automatic monitor detection — no fixed outputs or resolutions.
+- Automatic monitor detection - no fixed outputs or resolutions.
 - Bundled Lain video wallpaper, configured automatically; `--wallpaper` selects another local video.
 - Launcher dry-runs and per-display singleton locks.
 - Cleanup limited to each launcher's own children.
@@ -35,7 +35,7 @@ Available in interactive Zsh:
 - `la`: include hidden files; `lla`: combine `ll` and `la`.
 - `cat`: batcat with syntax highlighting; `catn`: plain style.
 - `catp`: no pager; `catnp`: plain style without a pager.
-- `xcopy`: copy to the clipboard — `pwd | xcopy` or `xcopy file.txt`.
+- `xcopy`: copy to the clipboard - `pwd | xcopy` or `xcopy file.txt`.
 
 Neovim is the default editor (`EDITOR` / `VISUAL`). Use `command cat` for the original cat. [Details](docs/terminal-utilities.md).
 
