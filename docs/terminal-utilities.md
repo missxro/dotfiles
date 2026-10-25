@@ -5,6 +5,7 @@ The core module installs `lsd`, `bat` (command: `batcat`) and `neovim` from the 
 Interactive Zsh provides Ro's aliases when the corresponding executable exists:
 - `ls`, `l`, `ll`, `la`, `lla`: lsd, directories first.
 - `cat`: batcat; `catn`: plain style; `catp`: no paging; `catnp`: plain style without paging.
+- `xcopy`: `xclip -selection clipboard`, for copying stdin or file contents to the X11 clipboard (for example, `pwd | xcopy` or `xcopy file.txt`). The core module includes `xclip`.
 - `EDITOR` and `VISUAL`: nvim.
 
 Non-interactive scripts keep their normal commands. Use `command cat` or `/bin/cat` for the original command interactively.

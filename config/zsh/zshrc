@@ -25,6 +25,9 @@ if (( $+commands[batcat] )); then
   alias catnp='batcat --style=plain --paging=never'
   alias catp='batcat --paging=never'
 fi
+if (( $+commands[xclip] )); then
+  alias xcopy='xclip -selection clipboard'
+fi
 if (( $+commands[nvim] )); then
   export EDITOR=nvim
   export VISUAL=nvim

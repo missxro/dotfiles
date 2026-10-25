@@ -46,7 +46,7 @@ class ZshTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder, mock.patch.dict(os.environ, {'HOME': folder}):
             home = Path(folder)
             for distro in ('debian', 'ubuntu', 'kali', 'parrot'):
-                for package in ('zsh', 'lsd', 'bat', 'neovim'):
+                for package in ('zsh', 'lsd', 'bat', 'neovim', 'xclip'):
                     self.assertIn(package, installer.package_names(['core'], distro))
                 self.assertIn('xserver-xorg', installer.package_names(['core'], distro))
             targets = dict((str(target), source) for source, target in installer.plan(['core']))
@@ -60,6 +60,7 @@ class ZshTests(unittest.TestCase):
         for alias in ("ls='lsd --group-dirs=first'", "ll='lsd -lh --group-dirs=first'",
                       "cat='batcat'", "catnp='batcat --style=plain --paging=never'"):
             self.assertIn(alias, config)
+        self.assertIn("alias xcopy='xclip -selection clipboard'", config)
         self.assertIn("export EDITOR=nvim", config)
         nvim = (ROOT / 'config/nvim/init.lua').read_text()
         self.assertIn('vim.opt.number = true', nvim)
